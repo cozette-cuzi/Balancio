@@ -1,5 +1,5 @@
 import { CRUD } from "../../common/interfaces/crud.interface";
-import tasksDao from "../daos/tasks.dao";
+import tasksDao from "../dao/tasks.dao";
 import { CreateTaskDto } from "../dto/create.task.dto";
 import { PutTaskDto } from "../dto/put.task.dto";
 
