@@ -12,6 +12,7 @@ import * as expressWinston from "express-winston";
 import { CommonRoutesConfig } from "./common/common.routes.config";
 import { UsersRoutes } from "./users/users.routes.config";
 import { AuthRoutes } from "./auth/auth.routes.config";
+import { TasksRoutes } from "./tasks/tasks.routes.config";
 
 
 const app: express.Application = express();
@@ -43,6 +44,7 @@ app.use(expressWinston.logger(loggerOptions));
 
 routes.push(new UsersRoutes(app));
 routes.push(new AuthRoutes(app));
+routes.push(new TasksRoutes(app));
 
 const runningMessage = `Server running at http://localhost:${port}`;
 

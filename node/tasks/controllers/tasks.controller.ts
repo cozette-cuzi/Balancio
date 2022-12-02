@@ -16,6 +16,7 @@ class TaskController {
     }
 
     async createTask(req: express.Request, res: express.Response) {
+        req.body.userId = res.locals.jwt.userId;
         const taskId = await tasksService.create(req.body);
         res.status(201).send({ id: taskId });
     }
