@@ -18,13 +18,5 @@ class TasksMiddleware {
         }
     }
     
-    async extractTaskId(
-        req: express.Request,
-        res: express.Response,
-        next: express.NextFunction
-    ) {
-        req.body.id = req.params.taskId;
-        next();
-    }
 }
 export default new TasksMiddleware();

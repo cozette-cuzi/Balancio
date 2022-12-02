@@ -6,12 +6,13 @@ const log: debug.IDebugger = debug('app:tasks-controller');
 
 class TaskController {
     async listTasks(req: express.Request, res: express.Response) {
-        const tasks = await tasksService.list(100, 0);
+        /* TODO: implement pagination */
+        const tasks = await tasksService.list(100, 0); 
         res.status(200).send(tasks);
     }
 
     async getTaskById(req: express.Request, res: express.Response) {
-        const task = await tasksService.readById(req.body.id);
+        const task = await tasksService.readById(req.params.taskId);
         res.status(200).send(task);
     }
 
@@ -22,17 +23,17 @@ class TaskController {
     }
 
     async patch(req: express.Request, res: express.Response) {
-        log(await tasksService.patchById(req.body.id, req.body));
+        log(await tasksService.patchById(req.params.taskId, req.body));
         res.status(204).send();
     }
 
     async put(req: express.Request, res: express.Response) {
-        log(await tasksService.putById(req.body.id, req.body));
+        log(await tasksService.putById(req.params.taskId, req.body));
         res.status(204).send();
     }
 
     async removeTask(req: express.Request, res: express.Response) {
-        log(await tasksService.deleteById(req.body.id));
+        log(await tasksService.deleteById(req.params.taskId));
         res.status(204).send();
     }
 }
