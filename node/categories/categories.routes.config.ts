@@ -25,18 +25,18 @@ export class CategoriesRoutes extends CommonRoutesConfig {
                 bodyValidationMiddleware.verifyBodyFieldsErrors,
                 jwtMiddleware.validJWTNeeded,
                 categoriesController.createCategory
-            )
+            );
 
         this.app.route(`/my-categories`)
             .get(
                 jwtMiddleware.validJWTNeeded,
                 categoriesController.getCategoriesByUserId
-            )
+            );
 
         this.app.route(`/categories/:categoryId`)
             .all(categoriesMiddleware.validateCategoryExists, jwtMiddleware.validJWTNeeded)
             .delete(categoriesController.removeCategory)
-            .get(categoriesController.getCategoryById)
+            .get(categoriesController.getCategoryById);
 
         this.app.put(`/categories/:categoryId`, [
             body("name").exists().withMessage("name required."),

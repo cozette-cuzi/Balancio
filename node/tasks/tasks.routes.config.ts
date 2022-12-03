@@ -25,6 +25,7 @@ export class TasksRoutes extends CommonRoutesConfig {
                 body("endDate").isISO8601().toDate().exists(),
                 body("categoryId").exists().withMessage("category required."), // TODO: check if category is valid
                 bodyValidationMiddleware.verifyBodyFieldsErrors,
+                tasksMiddleware.validateCategoryExists,
                 jwtMiddleware.validJWTNeeded,
                 tasksController.createTask,
             );
@@ -35,6 +36,11 @@ export class TasksRoutes extends CommonRoutesConfig {
             .get(tasksController.getTaskById)
             .delete(tasksController.removeTask);
 
+            this.app.route(`/my-tasks`)
+            .get(
+                jwtMiddleware.validJWTNeeded,
+                tasksController.getTasksByUserId
+            );
 
             this.app.put(`/tasks/:taskId`, [
                 body("title").exists().withMessage("title required."),
