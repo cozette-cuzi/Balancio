@@ -4,7 +4,7 @@ import tasksService from "../services/tasks.service";
 
 const log: debug.IDebugger = debug('app:tasks-controller');
 
-class TaskController {
+class TasksController {
     async listTasks(req: express.Request, res: express.Response) {
         /* TODO: implement pagination */
         const tasks = await tasksService.list(100, 0); 
@@ -37,4 +37,4 @@ class TaskController {
         res.status(204).send();
     }
 }
-export default new TaskController();
+export default new TasksController();

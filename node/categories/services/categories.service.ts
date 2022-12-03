@@ -33,3 +33,5 @@ class CategoriesService implements CRUD {
         return categoriesDao.updateCategoryById(id, resource);
     }
 }
+
+export default new CategoriesService();

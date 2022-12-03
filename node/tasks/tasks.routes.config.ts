@@ -9,7 +9,7 @@ import tasksMiddleware from "./middleware/tasks.middleware";
 export class TasksRoutes extends CommonRoutesConfig {
 
     constructor(app: express.Application) {
-        super(app, "UsersRoutes");
+        super(app, "TasksRoutes");
     }
 
     configureRoutes(): express.Application {
