@@ -8,7 +8,7 @@ import { CategoryDocument } from "./category.document";
 
 const log: debug.IDebugger = debug("app:category-dao");
 
-class CategoryDao {
+class CategoriesDao {
     Schema = mongooseService.getMongoose().Schema;
     mongoose = mongooseService.getMongoose();
 
@@ -68,4 +68,4 @@ class CategoryDao {
     }
 
 }
-export default new CategoryDao();
+export default new CategoriesDao();
